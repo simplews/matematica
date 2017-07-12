@@ -9,6 +9,11 @@ wp-content/upgrade/
 wp-content/uploads/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
+wp-content/plugins/debug*
+wp-content/plugins/deveveloper
+wp-content/plugins/log*
+wp-content/plugins/monster-widget
+wp-content/plugins/rewrite-rules-inspector
 
 /.htaccess
 /license.txt
