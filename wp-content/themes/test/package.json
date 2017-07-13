@@ -1,0 +1,16 @@
+{
+  "name": "matematica-test",
+  "version": "1.0.0",
+  "description": "Test",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simplews/matematica.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp-clean-css": "^3.6.0",
+    "gulp-include": "^2.3.1",
+    "gulp-watch": "^4.3.11"
+  }
+}
