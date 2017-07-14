@@ -6,7 +6,6 @@ global $matematica_test_version;
 
 $matematica_test_version = '1.0.0';
 
-// Le sigh...
 if ( ! isset( $content_width ) ) $content_width = 837;
 
 
