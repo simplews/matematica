@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     cleanCSS = require('gulp-clean-css'),
     include = require('gulp-include'),
+    phplint = require('phplint').lint,
     watch = require('gulp-watch');
 
 
@@ -24,9 +25,19 @@ gulp.task('scripts', function() {
         .pipe( gulp.dest("./") );
 });
 
+gulp.task('phplint', function (cb) {
+  phplint(['**/*.php'], {limit: 10}, function (err, stdout, stderr) {
+    if (err) {
+      cb(err)
+      process.exit(1)
+    }
+    cb()
+  })
+})
+
 gulp.task('watch', function () {
     gulp.watch('./dev/styles/*.scss', ['sass'] );
     gulp.watch('./dev/scripts/*.js', ['scripts'] );
 });
 
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('default', ['scripts', 'styles', 'phplint']);

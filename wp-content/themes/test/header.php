@@ -9,3 +9,9 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><a href="<?php echo get_home_url(); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+    </div>
+  </div>
