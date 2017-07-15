@@ -3,9 +3,9 @@
   <div class="col-md-6">
     <form id="new_order" name="new_order" method="post"  action="<?php echo get_template_directory_uri(); ?>/lib/wp-form.php">
     <div class="form-group products">
-    <label for="product">Select product:</label>
+    <label for="product">Выберите продукт:</label>
       <select class="form-control" id="product" name="product">
-      <option>Select product:</option>
+      <option>Выберите продукт:</option>
         <?php
         $args = array (
                 'post_type' => 'products',
@@ -29,25 +29,26 @@
     <?php
        $current_user = wp_get_current_user();
     ?>
-      <label for="firstname">First name:</label>
-      <input class="form-control" type="text" id="firstname" name="firstname" placeholder="Submit Your first name" value="<?php echo $current_user->first_name; ?>">
-      <label for="lastname">Last name:</label>
-      <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Submit Your last name" value="<?php echo $current_user->last_name; ?>">
+      <label for="firstname">Имя:</label>
+      <input class="form-control" type="text" id="firstname" name="firstname" placeholder="Укажите ваше имя" value="<?php echo $current_user->first_name; ?>">
+      <label for="lastname">Фамилия:</label>
+      <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Укажите вашу фамилию" value="<?php echo $current_user->last_name; ?>">
       <label for="email">Email:</label>
-      <input class="form-control" type="email" id="email" name="email" placeholder="Email" value="<?php echo $current_user->user_email; ?>">
+      <input class="form-control" type="email" id="email" name="email" placeholder="Укажите Email" value="<?php echo $current_user->user_email; ?>">
     </div>
     <div class="form-group delivery">
-    <label for="delivery">Select delivery method:</label>
+    <label for="delivery">Выберите способ доставки:</label>
       <select class="form-control" id="delivery" name="delivery">
-        <option>Пункт 1</option>
+        <option>Выберите способ доставки:</option>
         <?php
-        $terms = get_terms( 'delivery' );
+        $terms = get_terms( [
+          'taxonomy' => 'delivery',
+          'hide_empty' => false,
+          ]);
         if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-            echo '<option>';
             foreach ( $terms as $term ) {
-                echo $term->name;
+                echo '<option>'.$term->name.'</option>';
             }
-            echo '</option>';
         }
         ?>
       </select>

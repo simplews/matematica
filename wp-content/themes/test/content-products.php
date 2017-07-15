@@ -19,10 +19,10 @@
       <footer class="entry-footer">
       <?php
       if ( is_single() ) { ?>
-       <a class="btn btn-primary" a href="<?php echo get_page_link(21); ?>">Order page</a>
+       <a class="btn btn-primary" a href="<?php echo get_page_link(21); ?>">Заказать</a>
       <?php }
       else { ?>
-        <a class="btn btn-primary" a href="<?php echo get_permalink(); ?>">Order</a>
+        <a class="btn btn-primary" a href="<?php echo get_permalink(); ?>">Заказать</a>
       <?php }
       ?>
   </footer><!-- .entry-footer -->

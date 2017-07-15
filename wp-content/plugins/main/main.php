@@ -9,44 +9,10 @@ Author URI: https://github.com/simplews
 License: N/A
 Text Domain: main
 */
-class Custom_Post_Types{
 
-  function __construct($init){
-    $this->settings = $init;
-    add_action( 'init', array(&$this, 'add_custom_post_type') );
-  }
-  function add_custom_post_type(){
-    register_post_type( $this->settings['slug'],
-    array(
-      'labels' => array(
-        'name' => __( $this->settings['name'] ),
-        'singular_name' => __( $this->settings['singular_name'] )
-        ),
-      'taxonomies' => $this->settings['taxonomies'],
-      'public' => $this->settings['is_public'],
-      'has_archive' => $this->settings['has_archive']
-      )
-     );
-  }
-}
-
-class Custom_Taxonomy{
-
-  function __construct($init){
-    $this->settings = $init;
-    add_action( 'init', array(&$this, 'add_custom_taxonomies') );
-  }
-  function add_custom_taxonomies(){
-    register_taxonomy(
-    $this->settings['slug'],
-    'orders',
-    array(
-      'label' => __( $this->settings['name'] ),
-    )
-  );
-  }
-
-}
+define( 'MAIN__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+require_once( MAIN__PLUGIN_DIR . '/classes/post.class.php' );
+require_once( MAIN__PLUGIN_DIR . '/classes/taxonomy.class.php' );
 
 $orders_param = array(
     "slug" => "orders",
@@ -78,5 +44,17 @@ $status_param = array(
 
 $orders = new Custom_Post_Types ($orders_param);
 $products = new Custom_Post_Types ($products_param);
-$delivery = new Custom_Taxonomy($tax_param);
-$status = new Custom_Taxonomy($status_param);
+$delivery = new Custom_Taxonomy ($tax_param);
+$status = new Custom_Taxonomy ($status_param);
+
+
+function add_terms() {
+  wp_insert_term('Самовывоз','delivery');
+  wp_insert_term('Доставка почтой','delivery');
+  wp_insert_term('Курьерская доставка','delivery');
+  wp_insert_term('Обрабатывается','status');
+  wp_insert_term('Отправлен','status');
+  wp_insert_term('Отклонен','status');
+}
+
+add_terms();
