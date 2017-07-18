@@ -1,7 +1,7 @@
 <?php
 class Custom_Post_Types{
 
-  public function __construct($init){
+  function __construct($init){
     $this->settings = $init;
     add_action( 'init', array(&$this, 'add_custom_post_type') );
   }

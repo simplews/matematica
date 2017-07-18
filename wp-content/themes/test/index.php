@@ -4,7 +4,7 @@
 <?php if ( is_home() ){
   get_template_part( 'loop', 'products' );
 }
-      else get_template_part( 'content', 'products' );
+      else get_template_part( 'content', $post->post_type );
 ?>
 <?php
 
